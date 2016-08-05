@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
       "apt-get install software-properties-common &&
       apt-add-repository ppa:ansible/ansible &&
       apt-get update &&
-      apt-get --ignore-missing -y install ansible sshpass &&
+      apt-get --ignore-missing -y install tree ansible sshpass &&
       easy_install pip &&
       pip install http://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm"
   end
