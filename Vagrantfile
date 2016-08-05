@@ -25,7 +25,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "winserver" do |ws|
   	ws.vm.box = "jptoto/Windows2012R2"
-  	ws.vm.hostname = "windows-webserver01"
+  	ws.vm.hostname = "windows-webserver"
   	ws.vm.communicator = "winrm"
   	ws.winrm.username = "vagrant"
   	ws.winrm.password = "vagrant"
