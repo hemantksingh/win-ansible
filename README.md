@@ -1,5 +1,5 @@
 # Overview
-Manages a remote windows host using `winrm` using an Ubuntu ansible control server. Requirements:
+Manages a remote windows host using `winrm` through an Ubuntu ansible control server. Requirements:
 
 * vagrant
 * virtualbox

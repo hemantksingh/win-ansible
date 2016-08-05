@@ -1,5 +1,5 @@
 ---
 - hosts: web
   tasks:
-   - name: Install IIS web server
-     script: provision.ps1
+   - name: Configure server
+     script: configure.ps1
