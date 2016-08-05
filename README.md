@@ -4,6 +4,8 @@ Manages a remote windows host using `winrm` through an Ubuntu ansible control se
 * vagrant
 * virtualbox
 
+Control server uses ansible 2.1
+
 
 ## Setup servers
 
