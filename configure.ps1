@@ -56,6 +56,8 @@ if(-not (ChocolateyInstalled)) {
   iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 } else {
   Skip "Chocolatey"
+  Write-Output "Installing webdeploy ..."
+  choco install webdeploy -y
 }
 
 $featuresToInstall = "Web-WebServer", "Web-App-Dev --includeAllSubfeatures", "Web-Mgmt-Tools"
@@ -71,5 +73,3 @@ $featuresToInstall | ForEach-Object {
       Skip $feature
     }
 }
-
-#GetAllWindowsFeatures "False"
