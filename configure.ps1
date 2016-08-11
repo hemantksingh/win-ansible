@@ -34,6 +34,7 @@ function FeatureInstalled ($feature) {
 }
 
 function AddFeature($feature, $includeAllSubfeatures) {
+    Write-Output "Installing '$feature' with 'includeAllSubfeatures=$includeAllSubfeatures' ..."
     Add-WindowsFeature $feature
     if($includeAllSubfeatures) {
         $f = Get-WindowsFeature $feature
@@ -46,11 +47,15 @@ function AddFeature($feature, $includeAllSubfeatures) {
     }
 }
 
+function Skip($feature) {
+  Write-Output "Skipping '$feature', it is already installed."
+}
+
 if(-not (ChocolateyInstalled)) {
   Write-Output "Installing Chocolatey ..."
   iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 } else {
-  Write-Output "Skipping 'Chocolatey', it is already installed."
+  Skip "Chocolatey"
 }
 
 $featuresToInstall = "Web-WebServer", "Web-App-Dev --includeAllSubfeatures", "Web-Mgmt-Tools"
@@ -60,11 +65,10 @@ $featuresToInstall | ForEach-Object {
     $includeAllSubfeatures = $_.split()[1] -eq "--includeAllSubfeatures";
 
     if( -not (FeatureInstalled $feature)) {
-      Write-Output "Installing '$feature' with 'includeAllSubfeatures=$includeAllSubfeatures' ..."
       AddFeature $feature $includeAllSubfeatures
     }
     else {
-      Write-Output "Skipping '$feature', it is already installed."
+      Skip $feature
     }
 }
 
